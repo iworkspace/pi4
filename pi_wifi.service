@@ -1,0 +1,12 @@
+[Unit]
+Description=Turn on pi_wifi mode set if pi_wifi is present
+ConditionPathExistsGlob=/boot/pi_wifi
+After=wpa_supplicant udhcpd
+
+[Service]
+Type=forking
+ExecStart=/workspace/pi4/pi_wifi.sh -i /boot/pi_wifi
+
+[Install]
+WantedBy=multi-user.target
+

@@ -1,0 +1,29 @@
+/etc/network/interfaces
+#create br0(need install bridge-utils.deb:brctl),add eth0,assign static ipaddress,
+
+/etc/wpa_supplicant/wpa_supplicant.conf
+#default wifi connection
+
+/etc/hostapd/hostapd.conf
+#add wlan0 to br0 (eth0 also ),ssid=liangzhilaohu,no psk key.
+
+/etc/samba/smb.conf 
+#samba. smbpasswd root : 123456 ,only inner interface user use.
+
+/etc/udhcpd.conf
+# run dhcpd in br0
+
+/git
+#useradd git, setup home to /code_reps/ 
+
+common soft 
+#apt get soft.
+#zh input
+apt-get install -y fcitx fcitx-googlepinyin
+
+
+#other miss file.
+run uboot in pi4 (buildroot,and so on),the uboot modify mem_bank(2g,default is 4g???)
+uboot detect gpio --> select os loader (wifi ap ramdisk,kali....)
+
+
