@@ -1,0 +1,10 @@
+[Unit]
+Description=simple webfile server
+After=network.target auditd.service
+
+[Service]
+ExecStart=/usr/bin/bash -c "/workspace/pi4/webfile_server -d /file_share/ &"
+Type=forking
+
+[Install]
+WantedBy=multi-user.target
