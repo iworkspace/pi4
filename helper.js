@@ -51,6 +51,23 @@
 			//ajax.setRequestHeader("Content-Type","multipart/form-data");
 			ajax.setRequestHeader("Mime-Type","multipart/form-data");
 			ajax.setRequestHeader("mimeType","multipart/form-data");
+			var t1,count=0;
+			function refresh() {
+				if (count >= 10) {
+					window.location = window.location;
+				}
+				var output =  document.getElementById("output").value;
+				output += "\r\n wait to refresh " + (10-count) + " s";
+				document.getElementById("output").value = output;
+				count++ ; 
+			}
+			ajax.onreadystatechange = function() {
+				if(ajax.readyState == 4 && ajax.status == 200) {
+					document.getElementById("output").value = ajax.responseText;
+					//set refreash..
+					t1 = setInterval(refresh,1000);
+				}
+			} 
 			ajax.send(formData);
 	}
 	apps = document.createElement("div");
